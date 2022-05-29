@@ -25,20 +25,20 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 // /* ====================== Token Verify =================  */
-// function Verify(req, res, next) {
-//   const authHeader = req.headers.authorization;
-//   if (!authHeader) {
-//     return res.status(401).send({ massage: "UnAuthorization Access" });
-//   }
-//   const token = authHeader.split(" ")[1];
-//   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
-//     if (err) {
-//       return res.status(401).send({ massage: "UnAuthorization Access" });
-//     }
-//     req.decoded = decoded;
-//     next();
-//   });
-// }
+function Verify(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res.status(401).send({ massage: "UnAuthorization Access token" });
+  }
+  const token = authHeader.split(" ")[1];
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
+    if (err) {
+      return res.status(401).send({ massage: "UnAuthorization Access" });
+    }
+    req.decoded = decoded;
+    next();
+  });
+}
 async function run() {
   try {
     await client.connect();
