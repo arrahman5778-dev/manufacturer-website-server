@@ -23,7 +23,13 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 // /* ====================== Token Verify =================  */
-
+function Verify(req, res, next) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader) {
+    return res
+      .status(401)
+      .send({ massage: "UnAuthorization Access token  added" });
+  }
   const token = authHeader.split(" ")[1];
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
     if (err) {
