@@ -231,8 +231,9 @@ async function run() {
       const result = await collectionUser.findOne(userEmail);
       res.send(result.user);
     });
-    /* ========================********************** end MyProfile =====================***********************/
-    /* ========================********************** Star Payment  =====================***********************/
+    /* ==========********************** end MyProfile =====================***********/
+    
+    /* ========================********************** Star Payment  ============***********************/
     app.post("/create-payment-intent", async (req, res) => {
       const product = req.body;
       const ProductAmount = product.price;
