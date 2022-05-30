@@ -67,12 +67,7 @@ async function run() {
       res.send(result);
     });
     /* =============order payment  ===============  */
-    app.get("/service/:id", async (req, res) => {
-      const data = req.params.id;
-      const id = { _id: ObjectId(data) };
-      const result = await collectionServices.findOne(id);
-      res.send(result);
-    });
+    
     app.put("/service/Update/:id", async (req, res) => {
       const data = req.params.id;
       const id = { _id: ObjectId(data) };
