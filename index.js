@@ -164,12 +164,7 @@ async function run() {
       const result = await collectionReview.insertOne(data);
       res.send(result);
     });
-    app.get("/review", async (req, res) => {
-      //http://localhost:5000/review
-      const data = {};
-      const result = await collectionReview.find(data).limit(6).toArray();
-      res.send(result);
-    });
+    
     /* ========================********************** end Review  Review =====================***********************/
     /* ========================********************** Start User and Token   =====================***********************/
     app.put("/email/:id", async (req, res) => {
@@ -232,7 +227,7 @@ async function run() {
       res.send(result.user);
     });
     /* ==========********************** end MyProfile =====================***********/
-    
+
     /* ========================********************** Star Payment  ============***********************/
     app.post("/create-payment-intent", async (req, res) => {
       const product = req.body;
