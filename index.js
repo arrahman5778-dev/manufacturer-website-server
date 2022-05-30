@@ -247,7 +247,7 @@ async function run() {
         clientSecret: paymentIntent.client_secret,
       });
     });
-    console.log("working");
+    console.log("working.................");
     /* ========================********************** end Payment =====================***********************/
   } finally {
     //   await client.close();
@@ -256,7 +256,7 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Hello World....");
 });
 
 app.listen(port, () => {
