@@ -11,8 +11,6 @@ const {
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 
-
-
 /* ============= start middleware =============== */
 
 app.use(cors());
@@ -28,7 +26,9 @@ const client = new MongoClient(uri, {
 function Verify(req, res, next) {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    return res.status(401).send({ massage: "UnAuthorization Access token" });
+    return res
+      .status(401)
+      .send({ massage: "UnAuthorization Access token  added" });
   }
   const token = authHeader.split(" ")[1];
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
@@ -246,7 +246,7 @@ async function run() {
         clientSecret: paymentIntent.client_secret,
       });
     });
-    console.log("working")
+    console.log("working");
     /* ========================********************** end Payment =====================***********************/
   } finally {
     //   await client.close();
